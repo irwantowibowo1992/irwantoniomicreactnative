@@ -47,6 +47,9 @@ untuk implementasi class component dalam file terpisah, kita hanya perlu meng-im
     export default App
 ```
 
+pada kode App.js di atas diimport juga file Style.js yang ada di folder style, tujuannya adalah untuk memisahkan kode utama dan kode styling-nya.
+Jadi kodenya akan terlihat lebih bersih dan rapi
+
 ## Style.js
 ```javascript
     import { StyleSheet } from 'react-native'
@@ -59,6 +62,3 @@ untuk implementasi class component dalam file terpisah, kita hanya perlu meng-im
         }
     })
 ```
-
-pada kode App.js di atas diimport juga file Style.js yang ada di folder style, tujuannya adalah untuk memisahkan kode utama dan kode styling-nya.
-Jadi kodenya akan terlihat lebih bersih dan rapi
