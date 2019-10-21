@@ -1,6 +1,6 @@
 ## Class component dalam satu file
 
-kita bisa membuat class componen dalam satu file di, misalnya kita membuat class Header di dalam class class utama yaitu App
+kita bisa membuat class componen dalam satu file, misalnya kita membuat class Header di dalam class utama yaitu App
 
 ```javascript
     import React, { Component } from 'react'
