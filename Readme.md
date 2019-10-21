@@ -1,23 +1,37 @@
-## Class component dalam satu file
+## Class component dalam file terpisah
 
-kita bisa membuat class componen dalam satu file di, misalnya kita membuat class Header di dalam class class utama yaitu App
+untuk implementasi class component dalam file terpisah, kita hanya perlu meng-import file/class pada class utama kita (App)
 
+## Class Header.js
+```javascript
+    import React, { Component } from 'react'
+    import { View, Text } from 'react-native'
+
+    class Header extends Component{
+        render(){
+        return(
+            <Text>Ini Adalah Header Class</Text>
+        )
+        }
+    }
+
+    export default Header
+```
+
+## Class App.js
 ```javascript
     import React, { Component } from 'react'
     import { View, Text, StatusBar } from 'react-native'
 
-    class Header extends Component{
-    render(){
-        return(
-        <Text>Ini Adalah Header</Text>
-        )
-    }
-    }
+    //import file Header
+    import Header from './Header'
+
+    import styles from './style/Style'
 
     class App extends Component {
     render(){
         return(
-        <View>
+        <View style = {styles.container}>
             <StatusBar backgroundColor = "blue" />
 
             {/* panggil class Header */}
@@ -33,4 +47,5 @@ kita bisa membuat class componen dalam satu file di, misalnya kita membuat class
     export default App
 ```
 
-pada kode di atas terlihat bahwa class Header didefinisakan di dalam class App, dan cara memanggilnya adalah dengan memanggil nama class nya di class utama yaitu App
+pada kode App.js di atas diimport juga file Style.js yang ada di folder style, tujuannya adalah untuk memisahkan kode utama dan kode styling-nya.
+Jadi kodenya akan terlihat lebih bersih dan rapi

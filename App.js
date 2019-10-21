@@ -1,18 +1,15 @@
 import React, { Component } from 'react'
 import { View, Text, StatusBar } from 'react-native'
 
-class Header extends Component{
-  render(){
-    return(
-      <Text>Ini Adalah Header</Text>
-    )
-  }
-}
+//import file Header
+import Header from './Header'
+
+import styles from './style/Style'
 
 class App extends Component {
   render(){
     return(
-      <View>
+      <View style = {styles.container}>
         <StatusBar backgroundColor = "blue" />
 
         {/* panggil class Header */}
