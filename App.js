@@ -16,7 +16,8 @@ class App extends Component {
         <StatusBar backgroundColor = "blue" />
 
         {/* panggil class Header */}
-        <Header person = "Props Irwanto Wibowo" />
+        <Header person = "Name : Alex" />
+        <Header old = "Age : 25" />
 
         <Text>Hello React Native</Text>
 
