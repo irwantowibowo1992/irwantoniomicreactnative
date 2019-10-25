@@ -1,6 +1,6 @@
 ## State dan Props
 
-State adalah variabel default yang dimiliki oleh suatu component yang nilainya dapat diubah ubah, berbeda dengan props yang nilainya tidak bisa diubah. Nilai pada state harus didefinisikan terlebih dahulu pada suatu component. Untuk menggunakan state kita harus menuliskannya di dalam class component. Terdapat 2 car dalam menuliskan state yaitu menulikannya secara langsung di dalam class component dan menuliskannya di dalam constructor.
+State adalah variabel default yang dimiliki oleh suatu component yang nilainya dapat diubah ubah, berbeda dengan props yang nilainya tidak bisa diubah. Nilai pada state harus didefinisikan terlebih dahulu pada suatu component. Untuk menggunakan state kita harus menuliskannya di dalam class component. Terdapat 2 cara dalam menuliskan state yaitu menuliskannya secara langsung di dalam class component dan menuliskannya di dalam constructor.
 
 ## Untuk penulisan state secara langsung bisa dilihat seperti ini
 ### App.js
@@ -45,7 +45,7 @@ State adalah variabel default yang dimiliki oleh suatu component yang nilainya d
 
 ## cara yang kedua adalah dengan melalui constructor
 
-## App.js
+## Header.js
 ```javascript
     constructor(props){
       super(props);
