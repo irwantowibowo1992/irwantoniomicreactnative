@@ -1,35 +1,51 @@
-## Function Component Dalam 1 File
+## Function Component Dengan File Terpisah
 
-Yang harus kita perhatikan adalah jika kita menuliskan function component ataupun class component tidak boleh dituliskan di dalam class component ataupun function component itu sendiri, jadi kita harus menuliskannya di luar class component ataupun function component inti. Misal class intinya adalah App maka penulisannya di luar class App.
+Untuk funtion component dengan file terpisah ini kita akan memindahkan function Footer ke dalam file Footer.js dan mengimportnya di App.js
 
-## Class Header.js
+## Footer.js
 ```javascript
-    // Membuat function component 
-    const Footer = () => {
-        var niomic = "@niomic"
+    import React, { Component } from 'react'
+    import { View, Text } from 'react-native'
 
-        return(
-            <View>
-            <Text>Ini adalah Footer</Text>
-            <Text>{niomic}</Text>
-            </View>
-        )
-    }
-
-    class App extends Component {
-        render(){
+        // Membuat function component 
+        Footer = () => {
+            var niomic = "@niomic"
+        
             return(
-            <View style = {styles.container}>
-                <StatusBar backgroundColor = "blue" />
-
-                {/* panggil class Header */}
-                <Header />
-
-                <Text>Hello React Native</Text>
-
-                <Footer />
+            <View>
+                <Text>Ini adalah Footer Niomic</Text>
+                <Text>{niomic}</Text>
             </View>
             )
         }
+
+    export default Footer
+```
+
+## App.js
+```javascript
+    //import file Footer
+    import Footer from './Footer'
+
+    import styles from './style/Style'
+
+    class App extends Component {
+    render(){
+        return(
+        <View style = {styles.container}>
+            <StatusBar backgroundColor = "blue" />
+
+            {/* panggil class Header */}
+            <Header />
+
+            <Text>Hello React Native</Text>
+
+            <Footer />
+        </View>
+        )
     }
+    }
+
+
+    export default App
 ```

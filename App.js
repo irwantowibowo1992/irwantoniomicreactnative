@@ -4,19 +4,10 @@ import { View, Text, StatusBar } from 'react-native'
 //import file Header
 import Header from './Header'
 
+//import file Footer
+import Footer from './Footer'
+
 import styles from './style/Style'
-
-// Membuat function component 
-const Footer = () => {
-  var niomic = "@niomic"
-
-  return(
-    <View>
-      <Text>Ini adalah Footer</Text>
-      <Text>{niomic}</Text>
-    </View>
-  )
-}
 
 class App extends Component {
   render(){
