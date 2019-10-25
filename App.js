@@ -16,11 +16,11 @@ class App extends Component {
         <StatusBar backgroundColor = "blue" />
 
         {/* panggil class Header */}
-        <Header />
+        <Header person = "Props Irwanto Wibowo" />
 
         <Text>Hello React Native</Text>
 
-        <Footer />
+        <Footer tahun = "2019" />
       </View>
     )
   }
