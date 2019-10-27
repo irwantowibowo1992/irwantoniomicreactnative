@@ -1,48 +1,81 @@
 ## Handling Text Input dan Set State
 
-Pada materi sebelumnya............state sendiri bisa digunakan di dalam class component, sedangkan untuk fanction component kita tidak bisa menggunakan state. Anyway lupakan duu soal ini karena saya belum paham soal state dan props secara menyeluruh.
+Untuk kali ini kita akan belajar meng-handle button. Yang kita butuhkan tentu saja button :)
+Ceritanya kita akan membuat button dan ketika button ditekan maka akan mengeluarkan alert. Sederhana saja dulu.
 
-Pada materi saat ini kita akan belajar bagaimana memanfaatkan state untuk mengolah inputan data. Menarik akan, makanya simak ters ya.
 
-
-### Header.js
+### App.js
 ```javascript
-    class Header extends Component{
-        // //menulikan state secara langsung
-        // state = {
-        //   address: "Gunungkidul",
+    class App extends Component {
 
-        //   // mengambil variabel dari props
-        //   age: this.props.old
-        // }
+    handleTambah = () => {
+        Alert.alert("Ini adalah handle tambah")
+    }
 
-        constructor(props){
-        super(props);
-        this.state = {
-            age: this.props.old,
-            input: ''
-        }
-    
-        }
-
-        render(){
+    render(){
         return(
-            <View>
-            {/* <Text>{this.props.person} {this.state.age} {this.state.address}</Text> */}
-            <Text>{this.props.person} {this.state.age}</Text>
+            <View style = {styles.container}>
+                <StatusBar backgroundColor = "blue" />
 
-            <TextInput onChangeText={(events) => {this.setState({input:events})}} />
-            <Text>Inputan : {this.state.input}</Text>
+                {/* panggil class Header */}
+                {/* <Header person = "Name : Alex" /> */}
+                <Header old = "Age : 25" />
+
+                <Text>Hello React Native</Text>
+
+                <Footer tahun = "2019" />
+
+                <Button title="Button Tambah" onPress={this.handleTambah} />
             </View>
-            
-        )
+            )
         }
     }
 ```
 
-Hal pertama yang harus kita lakukan adalah membuat constructor. Constractor ini adalah fungsi yang pertama dieksekusi sebelum merender aplikasi. Di dalam constructor ini kita definisikan variabel untuk menampung inputan, misal kita beri nama variabelnya dengan "input" dan untuk value nya kita beri nilai kosong karena akan diisi dengan nilai dari textInput dari masukan si user. 
+"<Button title="Button Tambah" onPress={this.handleTambah} />" adalah kode untuk membuat botton nya. Di sini terdapat kode "onPress={this.handleTambah}" yang kalau saya terjemahkan ketika button ditekan maka akan menuju ke function handleTambah. Nah di function handle tambah ini akan menampilkan alert nya. "handleTambah = () => { Alert.alert("Ini adalah handle tambah") }"
 
-Kemudian di dalam textInput kita menambahkan property onChangeText yang berfungsi untuk memberikan sebuah value dari text inputan, misalkan saja di textxInput kita beri atau kita ketik "Irwanto" maka akan memberikan nilai value "Irwanto". Selanjutnya kita set untuk state nya dengan menggunakan '(events) => {this.setState({input:events})}'. 
+Run aplikasinya dan lihat hasilnya, ketika button ditekan maka akan muncul alert. Mudah bukan??
 
-Penjelasan dari kode tersebut kira kira seperti ini, "this.setState" ini berfungsi untuk men-set data masukkan user ke dalam variabel input. Variabel input ini akan berisi nilai events (input:events) di mana events didapat dari properti function '(events) => {}'. Jadi secara sederhananya data input yang pertama kita definisikan di state yang semula kosong akan diisi oleh data dari inputan user tersebut.
-Kemudian data yang diinputkan tadi akan ditampilkan dengan mengakses statenya '{this.state.input}'
+Oke mari kita modifikasi buttonnya. Ceritanya button ini akan menambahkan angka setiap button ditekan. Jadi angkanya akan bertambah 1 setiap button ditekan.
+
+Kita modifikasi App.js dengan menambhkan state
+```javascript
+    class App extends Component {
+
+    constructor() {
+        super()
+
+        this.state = {
+            jumlah: 0
+        }
+    }
+
+    handleTambah = () => {
+        this.setState({
+            jumlah: this.state.jumlah + 1
+        })
+    }
+
+    render(){
+        return(
+            <View style = {styles.container}>
+                <StatusBar backgroundColor = "blue" />
+
+                {/* panggil class Header */}
+                {/* <Header person = "Name : Alex" /> */}
+                <Header old = "Age : 25" />
+
+                <Text>Hello React Native</Text>
+
+                <Footer tahun = "2019" />
+
+                <Button title="Button Tambah" onPress={this.handleTambah} />
+
+                <Text>Jumlah : {this.state.jumlah}</Text>
+            </View>
+            )
+        }
+    }
+```
+Pada kode di atas kita membuat constructor. Constructor ini akan dijankan pertama kali sebelum merender sesuatu.
+Karena di constructornya kita mendefinisikan state jumlah dengan nilai awal 0 maka saat aplikasi dirender maka jumlah yang muncul pertama kali adalah 0 ( "<Text>Jumlah : {this.state.jumlah}</Text>" ). Barulah saat button ditakan maka button akan memanggil function handleTambah. Di function handleTambah ini variabel jumlah akan di setState dengan ditambah 1 (" this.setState({ jumlah: this.state.jumlah + 1 }) "). Jadi ketika button ditekan angkanya akan berubah dengan ditambahkan 1.
