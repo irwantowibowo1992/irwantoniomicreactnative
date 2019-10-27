@@ -32,15 +32,14 @@ class App extends Component {
 
         {/* panggil class Header */}
         {/* <Header person = "Name : Alex" /> */}
+        <Text style={styles.header}>Hello React Native</Text>
         <Header old = "Age : 25" />
-
-        <Text>Hello React Native</Text>
 
         <Footer tahun = "2019" />
 
         <Button title="Button Tambah" onPress={this.handleTambah} />
 
-        <Text>Jumlah : {this.state.jumlah}</Text>
+        <Text style={styles.jumlah}>Jumlah : {this.state.jumlah}</Text>
       </View>
     )
   }
