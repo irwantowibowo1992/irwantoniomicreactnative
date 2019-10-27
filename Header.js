@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, TextInput } from 'react-native'
 
 class Header extends Component{
     // //menulikan state secara langsung
@@ -13,15 +13,22 @@ class Header extends Component{
     constructor(props){
       super(props);
       this.state = {
-        age: this.props.old
+        age: this.props.old,
+        input: ''
       }
   
     }
 
     render(){
       return(
-        // <Text>{this.props.person} {this.state.age} {this.state.address}</Text>
-        <Text>{this.props.person} {this.state.age}</Text>
+        <View>
+          {/* <Text>{this.props.person} {this.state.age} {this.state.address}</Text> */}
+          <Text>{this.props.person} {this.state.age}</Text>
+
+          <TextInput onChangeText={(events) => {this.setState({input:events})}} />
+          <Text>Inputan : {this.state.input}</Text>
+        </View>
+        
       )
     }
 }

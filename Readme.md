@@ -1,98 +1,48 @@
-## State dan Props
+## Handling Text Input dan Set State
 
-State adalah variabel default yang dimiliki oleh suatu component yang nilainya dapat diubah ubah, berbeda dengan props yang nilainya tidak bisa diubah. Nilai pada state harus didefinisikan terlebih dahulu pada suatu component. Untuk menggunakan state kita harus menuliskannya di dalam class component. Terdapat 2 cara dalam menuliskan state yaitu menuliskannya secara langsung di dalam class component dan menuliskannya di dalam constructor.
+Pada materi sebelumnya............state sendiri bisa digunakan di dalam class component, sedangkan untuk fanction component kita tidak bisa menggunakan state. Anyway lupakan duu soal ini karena saya belum paham soal state dan props secara menyeluruh.
 
-## Untuk penulisan state secara langsung bisa dilihat seperti ini
-### App.js
-```javascript
-    class App extends Component {
-        render(){
-            return(
-            <View style = {styles.container}>
-                <StatusBar backgroundColor = "blue" />
+Pada materi saat ini kita akan belajar bagaimana memanfaatkan state untuk mengolah inputan data. Menarik akan, makanya simak ters ya.
 
-                {/* panggil class Header */}
-                <Header person = "Name : Alex" />
-                <Header old = "Age : 20" />
-
-                <Text>Hello React Native</Text>
-
-                <Footer tahun = "2019" />
-            </View>
-            )
-        }
-    }
-```
 
 ### Header.js
 ```javascript
     class Header extends Component{
-        //menulikan state secara langsung
-        state = {
-        address: "Gunungkidul",
+        // //menulikan state secara langsung
+        // state = {
+        //   address: "Gunungkidul",
 
-        // mengambil variabel dari props
-        age: this.props.old
+        //   // mengambil variabel dari props
+        //   age: this.props.old
+        // }
+
+        constructor(props){
+        super(props);
+        this.state = {
+            age: this.props.old,
+            input: ''
+        }
+    
         }
 
         render(){
         return(
-            <Text>{this.props.person} {this.state.age} {this.state.address}</Text>
+            <View>
+            {/* <Text>{this.props.person} {this.state.age} {this.state.address}</Text> */}
+            <Text>{this.props.person} {this.state.age}</Text>
+
+            <TextInput onChangeText={(events) => {this.setState({input:events})}} />
+            <Text>Inputan : {this.state.input}</Text>
+            </View>
+            
         )
         }
     }
 ```
 
-## cara yang kedua adalah dengan melalui constructor
+Hal pertama yang harus kita lakukan adalah membuat constructor. Constractor ini adalah fungsi yang pertama dieksekusi sebelum merender aplikasi. Di dalam constructor ini kita definisikan variabel untuk menampung inputan, misal kita beri nama variabelnya dengan "input" dan untuk value nya kita beri nilai kosong karena akan diisi dengan nilai dari textInput dari masukan si user. 
 
-## Header.js
-```javascript
-    constructor(props){
-      super(props);
-      this.state = {
-        age: this.props.old
-      }
-    }
+Kemudian di dalam textInput kita menambahkan property onChangeText yang berfungsi untuk memberikan sebuah value dari text inputan, misalkan saja di textxInput kita beri atau kita ketik "Irwanto" maka akan memberikan nilai value "Irwanto". Selanjutnya kita set untuk state nya dengan menggunakan '(events) => {this.setState({input:events})}'. 
 
-    render(){
-      return(
-        <Text>{this.props.person} {this.state.age}</Text>
-      )
-    }
-```
-pada kode di atas terdapat parameter di dalam constructor dan super (yaitu parameter props), hal ini dikarenakan kita mengambil parameter yang dikirim dari component lain, dan saat kita mengambil parameter dengan menggunakan props maka di constructor dan super harus kita isi dengan props.
-Berbeda jika kita tidak memanggil menggunakan props, maka cukup dedefinisikan di constructor tanpa harus diisi dengan parameter di dalam constructor dan super, contoh :
-```javascript
-    constructor(){
-      super();
-      this.state = {
-        age: "Umur : 25 "
-      }
-    }
-
-    render(){
-      return(
-        <Text>{this.props.person} {this.state.age}</Text>
-      )
-    }
-```
-
-### App.js
-```javascript
-    class App extends Component {
-    render(){
-        return(
-        <View style = {styles.container}>
-            <StatusBar backgroundColor = "blue" />
-
-            <Header person = "Name : Alex" />
-            <Header old = "Age : 20" />
-
-            <Text>Hello React Native</Text>
-
-            <Footer tahun = "2019" />
-        </View>
-        )
-    }
-    }
-```
+Penjelasan dari kode tersebut kira kira seperti ini, "this.setState" ini berfungsi untuk men-set data masukkan user ke dalam variabel input. Variabel input ini akan berisi nilai events (input:events) di mana events didapat dari properti function '(events) => {}'. Jadi secara sederhananya data input yang pertama kita definisikan di state yang semula kosong akan diisi oleh data dari inputan user tersebut.
+Kemudian data yang diinputkan tadi akan ditampilkan dengan mengakses statenya '{this.state.input}'
