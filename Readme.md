@@ -32,7 +32,7 @@ Ceritanya kita akan membuat button dan ketika button ditekan maka akan mengeluar
     }
 ```
 
-"<Button title="Button Tambah" onPress={this.handleTambah} />" adalah kode untuk membuat botton nya. Di sini terdapat kode "onPress={this.handleTambah}" yang kalau saya terjemahkan ketika button ditekan maka akan menuju ke function handleTambah. Nah di function handle tambah ini akan menampilkan alert nya. "handleTambah = () => { Alert.alert("Ini adalah handle tambah") }"
+```<Button title="Button Tambah" onPress={this.handleTambah} />``` adalah kode untuk membuat botton nya. Di sini terdapat kode "onPress={this.handleTambah}" yang kalau saya terjemahkan ketika button ditekan maka akan menuju ke function handleTambah. Nah di function handle tambah ini akan menampilkan alert nya. "handleTambah = () => { Alert.alert("Ini adalah handle tambah") }"
 
 Run aplikasinya dan lihat hasilnya, ketika button ditekan maka akan muncul alert. Mudah bukan??
 
